@@ -16,7 +16,7 @@
     <header>
         <div class="container mx-auto px-4">
             <div class="logo">
-                <a href="/">
+                <a href="#hero">
                     <img src="images/logo.png" alt="JEJU MODE LIFESTYLE FESTIVAL Logo">
                 </a>
             </div>
@@ -853,6 +853,22 @@
         </section>
     </main>
 
+    <!-- 支付 QR Code 彈出視窗 -->
+    <div id="qr-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[2000] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-8 text-center shadow-2xl transform transition-all scale-100">
+            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✓</div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="modal_success">預訂資訊已確認</h3>
+            <p id="qr-modal-description" class="text-gray-600 mb-6 font-medium"></p>
+            <div class="bg-gray-50 p-6 rounded-2xl mb-6 border border-gray-100">
+                <img src="images/qr_code_payment.png" alt="Payment QR Code" class="w-48 h-48 mx-auto shadow-sm">
+            </div>
+            <p class="text-xs text-gray-400 mb-6" data-i18n="modal_instruction">請於現場出示此 QR Code 完成支付與票券核銷</p>
+            <button onclick="closeModal()" class="w-full py-4 bg-gray-900 text-white font-bold rounded-2xl hover:bg-black transition active:scale-95" data-i18n="modal_close">
+                關閉視窗
+            </button>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2026 JEJU MODE LIFESTYLE FESTIVAL. All Rights Reserved.</p>
@@ -860,148 +876,67 @@
     </footer>
 
     <script>
-        // 語系字典
         const translations = {
             zh: {
-                nav_about: "關於活動",
-                nav_activities: "活動內容",
-                nav_market: "特色市集",
-                nav_performances: "舞台表演",
-                nav_shuttle: "接駁資訊",
-                nav_accommodation: "住宿合作",
-                nav_tickets: "票務資訊",
-                nav_contact: "聯絡我們",
-                hero_btn: "立即購票",
-                about_title: "遇見全新濟州：JEJU MODE LIFESTYLE FESTIVAL 即將浪漫登場！",
-                about_p1: "每當提起沖繩，腦海中便會響起熱血的 EISA 沖繩太鼓舞...",
-                about_p2: "濟州島，這座擁有豐厚火山自然奇景與神祕神話色彩的島嶼，今年將以全新的面貌與你相遇！...",
-                activities_title: "精彩活動一覽",
-                market_title: "濟州特色&文青市集",
-                performances_title: "主舞台精彩表演",
-                shuttle_title: "接駁車資訊",
-                accommodation_title: "住宿合作與市集抵用券",
-                tickets_title: "票務資訊",
-                contact_title: "聯絡我們",
-                about_p3: "本次活動特別選在充滿神話底蘊與大自然氣息的...",
-                about_p4: "從自然的靜謐到音樂的狂歡，一場融合傳統文化與現代潮流的島嶼派對即將展開。"
+                nav_about: "關於活動", nav_activities: "活動內容", nav_market: "特色市集", nav_performances: "舞台表演", 
+                nav_shuttle: "接駁資訊", nav_accommodation: "住宿合作", nav_tickets: "票務資訊", nav_contact: "聯絡我們",
+                hero_btn: "立即購票", about_title: "遇見全新濟州：JEJU MODE LIFESTYLE FESTIVAL 即將浪漫登場！",
+                activities_title: "精彩活動一覽", market_title: "濟州特色&文青市集", performances_title: "主舞台精彩表演", 
+                shuttle_title: "接駁車資訊", accommodation_title: "住宿合作與市集抵用券", tickets_title: "票務資訊", 
+                contact_title: "聯絡我們", modal_success: "預訂資訊已確認", modal_close: "關閉視窗",
+                modal_instruction: "請於現場出示此 QR Code 完成支付與票券核銷",
+                success_msg_ticket: "您已成功預訂：{qty} 張 {name}",
+                success_msg_shuttle: "您已成功預約：{qty} 人份 {name}"
             },
             en: {
-                nav_about: "About",
-                nav_activities: "Activities",
-                nav_market: "Market",
-                nav_performances: "Stage",
-                nav_shuttle: "Shuttle",
-                nav_accommodation: "Hotels",
-                nav_tickets: "Tickets",
-                nav_contact: "Contact",
-                hero_btn: "Book Now",
-                about_title: "Meet a Brand New Jeju: JEJU MODE LIFESTYLE FESTIVAL!",
-                about_p1: "When you think of Okinawa, you hear EISA; when you think of Penghu, you see fireworks...",
-                about_p2: "Jeju Island, with its rich volcanic wonders and mythical colors, will meet you with a brand-new look this year!...",
-                activities_title: "Event Activities",
-                market_title: "Jeju Lifestyle Market",
-                performances_title: "Stage Performances",
-                shuttle_title: "Shuttle Bus Info",
-                accommodation_title: "Hotel Partnerships",
-                tickets_title: "Ticket Information",
-                contact_title: "Contact Us",
-                about_p3: "Held at the 'Jeju Stone Culture Park', a place full of myths and nature...",
-                about_p4: "From the tranquility of nature to the frenzy of music, a party is about to begin."
+                nav_about: "About", nav_activities: "Activities", nav_market: "Market", nav_performances: "Stage", 
+                nav_shuttle: "Shuttle", nav_accommodation: "Hotels", nav_tickets: "Tickets", nav_contact: "Contact",
+                hero_btn: "Book Now", about_title: "Meet a Brand New Jeju: JEJU MODE LIFESTYLE FESTIVAL!",
+                activities_title: "Event Activities", market_title: "Jeju Lifestyle Market", performances_title: "Stage Performances", 
+                shuttle_title: "Shuttle Bus Info", accommodation_title: "Hotel Partnerships", tickets_title: "Ticket Information", 
+                contact_title: "Contact Us", modal_success: "Booking Confirmed", modal_close: "Close",
+                modal_instruction: "Please present this QR Code at the venue for payment and check-in.",
+                success_msg_ticket: "Successfully booked: {qty} x {name}",
+                success_msg_shuttle: "Successfully reserved: {qty} x {name}"
             },
             ja: {
-                nav_about: "イベント概要",
-                nav_activities: "イベント內容",
-                nav_market: "マーケット",
-                nav_performances: "ステージ",
-                nav_shuttle: "シャトルバス",
-                nav_accommodation: "宿泊提携",
-                nav_tickets: "チケット",
-                nav_contact: "お問い合わせ",
-                hero_btn: "チケット購入",
-                about_title: "新しい済州に出會う：JEJU MODE LIFESTYLE FESTIVAL 開催！",
-                about_p1: "沖縄といえばエイサー、澎湖といえば花火大会...",
-                about_p2: "豊かな火山の自然美と神話の色彩を持つ済州島が、今年は新しい姿であなたを待っています！...",
-                activities_title: "イベント内容",
-                market_title: "済州ライフスタイルマーケット",
-                performances_title: "ステージパフォーマンス",
-                shuttle_title: "シャトルバス案内",
-                accommodation_title: "宿泊・クーポン情報",
-                tickets_title: "チケット情報",
-                contact_title: "お問い合わせ",
-                about_p3: "今回のイベントは、神話と自然が息づく「済州石文化公園」で開催されます...",
-                about_p4: "自然の静寂から音楽の狂乱まで、伝統文化と現代トレンドが融合した島派対が始まります。"
+                nav_about: "イベント概要", nav_activities: "内容", nav_market: "マーケット", nav_performances: "ステージ", 
+                nav_shuttle: "シャトルバス", nav_accommodation: "宿泊提携", nav_tickets: "チケット", nav_contact: "お問い合わせ",
+                hero_btn: "チケット購入", about_title: "新しい済州に出会う：JEJU MODE LIFESTYLE FESTIVAL!",
+                activities_title: "イベント内容", market_title: "マーケット", performances_title: "ステージ", 
+                shuttle_title: "シャトルバス案内", accommodation_title: "宿泊情報", tickets_title: "チケット情報", 
+                contact_title: "お問い合わせ", modal_success: "予約が確認されました", modal_close: "閉じる",
+                modal_instruction: "会場でこのQRコードを提示して、支払いを行ってください。",
+                success_msg_ticket: "予約完了：{qty} 枚 {name}",
+                success_msg_shuttle: "予約完了：{qty} 名 {name}"
             },
             ko: {
-                nav_about: "행사 정보",
-                nav_activities: "행사 내용",
-                nav_market: "마켓",
-                nav_performances: "무대 공연",
-                nav_shuttle: "셔틀 정보",
-                nav_accommodation: "숙박 협력",
-                nav_tickets: "티켓 정보",
-                nav_contact: "문의하기",
-                hero_btn: "티켓 예매",
-                about_title: "새로운 제주를 만나다: JEJU MODE LIFESTYLE FESTIVAL!",
-                about_p1: "오키나와 하면 에이사, 펑후 하면 불꽃축제가 떠오르듯이...",
-                about_p2: "화산 자연 기경과 신비로운 신화의 색채를 가진 제주도가 올해 새로운 모습으로 여러분을 찾아갑니다!...",
-                activities_title: "주요 행사 안내",
-                market_title: "제주 라이프스타일 마켓",
-                performances_title: "스테이지 공연",
-                shuttle_title: "셔틀버스 정보",
-                accommodation_title: "숙박 협력 및 마켓 쿠폰",
-                tickets_title: "티켓 예매 정보",
-                contact_title: "문의하기",
-                about_p3: "이번 행사는 신화와 자연의 기운이 가득한 '제주돌문화공원'에서 열립니다...",
-                about_p4: "자연의 정적에서 음악의 환희까지, 전통 문화와 현대 트렌드가 어우러진 파티가 시작됩니다."
+                nav_about: "행사 정보", nav_activities: "내용", nav_market: "마켓", nav_performances: "공연", 
+                nav_shuttle: "셔틀 정보", nav_accommodation: "숙박 협력", nav_tickets: "티켓 정보", nav_contact: "문의하기",
+                hero_btn: "티켓 예매", about_title: "새로운 제주를 만나다: JEJU MODE LIFESTYLE FESTIVAL!",
+                activities_title: "주요 행사 안내", market_title: "라이프스타일 마켓", performances_title: "스테이지 공연", 
+                shuttle_title: "셔틀버스 정보", accommodation_title: "숙박 및 쿠폰", tickets_title: "티켓 예매", 
+                contact_title: "문의하기", modal_success: "예약 정보 확인됨", modal_close: "닫기",
+                modal_instruction: "현장에서 이 QR 코드를 제시하여 결제를 완료해 주세요.",
+                success_msg_ticket: "예약 성공: {qty} 매 {name}",
+                success_msg_shuttle: "예약 성공: {qty} 명 {name}"
             }
         };
 
         function changeLanguage(lang) {
-            // 儲存選擇的語系
             localStorage.setItem('preferredLanguage', lang);
-            
-            // 遍歷所有帶有 data-i18n 屬性的標籤
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
                     element.innerHTML = translations[lang][key];
                 }
             });
-            
-            // 更新選單狀態
             document.getElementById('language-select').value = lang;
         }
 
-        // 初始化檢查上次選擇的語系
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferredLanguage') || 'zh';
-            changeLanguage(savedLang);
-        });
-
-        // Simple JavaScript for mobile navigation toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', function() {
-                    navMenu.classList.toggle('active');
-                    menuToggle.classList.toggle('active');
-                });
-
-                // Close menu when a link is clicked (for single-page navigation)
-                navMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                    });
-                });
-            }
-        });
-
-        // Ticket Booking Logic
         function selectTicket(name, price) {
             const select = document.getElementById('ticket-type');
+            if (!select) return;
             for (let i = 0; i < select.options.length; i++) {
                 if (select.options[i].text.includes(name)) {
                     select.selectedIndex = i;
@@ -1012,25 +947,85 @@
         }
 
         function updateTotal() {
-            const price = parseInt(document.getElementById('ticket-type').value);
-            const qty = parseInt(document.getElementById('ticket-qty').value);
-            document.getElementById('total-amount').innerText = (price * qty).toLocaleString();
+            const typeSelect = document.getElementById('ticket-type');
+            const qtyInput = document.getElementById('ticket-qty');
+            const totalSpan = document.getElementById('total-amount');
+            if (typeSelect && qtyInput && totalSpan) {
+                const price = parseInt(typeSelect.value);
+                const qty = parseInt(qtyInput.value);
+                totalSpan.innerText = (price * qty).toLocaleString();
+            }
         }
 
         function updateShuttleTotal() {
-            const price = parseInt(document.getElementById('shuttle-route').value);
-            const qty = parseInt(document.getElementById('shuttle-qty').value);
-            document.getElementById('shuttle-total-amount').innerText = (price * qty).toLocaleString();
+            const routeSelect = document.getElementById('shuttle-route');
+            const qtyInput = document.getElementById('shuttle-qty');
+            const totalSpan = document.getElementById('shuttle-total-amount');
+            if (routeSelect && qtyInput && totalSpan) {
+                const price = parseInt(routeSelect.value);
+                const qty = parseInt(qtyInput.value);
+                totalSpan.innerText = (price * qty).toLocaleString();
+            }
         }
 
-        document.getElementById('booking-form')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('感謝您的訂購！系統將引導您至支付頁面... (模擬環境：購票成功)');
-        });
+        function showQRModal(description) {
+            const modal = document.getElementById('qr-modal');
+            const descElem = document.getElementById('qr-modal-description');
+            if (modal && descElem) {
+                descElem.innerText = description;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
-        document.getElementById('shuttle-booking-form')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('感謝您的預約！接駁車席次已為您保留，系統將引導您至支付頁面... (模擬環境：預約成功)');
+        function closeModal() {
+            const modal = document.getElementById('qr-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'zh';
+            changeLanguage(savedLang);
+
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                });
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    });
+                });
+            }
+
+            document.getElementById('booking-form')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const lang = localStorage.getItem('preferredLanguage') || 'zh';
+                const select = document.getElementById('ticket-type');
+                const ticketName = select.options[select.selectedIndex].text.split(' (')[0];
+                const qty = document.getElementById('ticket-qty').value;
+                let msg = translations[lang].success_msg_ticket || translations['zh'].success_msg_ticket;
+                msg = msg.replace('{qty}', qty).replace('{name}', ticketName);
+                showQRModal(msg);
+            });
+
+            document.getElementById('shuttle-booking-form')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const lang = localStorage.getItem('preferredLanguage') || 'zh';
+                const select = document.getElementById('shuttle-route');
+                const routeName = select.options[select.selectedIndex].text.split(' (')[0];
+                const qty = document.getElementById('shuttle-qty').value;
+                let msg = translations[lang].success_msg_shuttle || translations['zh'].success_msg_shuttle;
+                msg = msg.replace('{qty}', qty).replace('{name}', routeName);
+                showQRModal(msg);
+            });
         });
     </script>
 </body>
