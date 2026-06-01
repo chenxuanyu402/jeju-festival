@@ -1,0 +1,518 @@
+/* Basic Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #F57C00; /* 溫暖的橘子色 */
+    --secondary-color: #FFB300; /* 日落金黃 */
+    --accent-color: #E64A19; /* 深日落紅 */
+    --text-dark: #333;
+    --text-light: #666;
+    --bg-light: #FFF8E1; /* 溫暖奶油背景色 */
+    --bg-white: #fff;
+    --border-color: #FFE0B2;
+    --font-family-base: 'Noto Sans TC', sans-serif;
+}
+
+body {
+    font-family: var(--font-family-base);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+h1, h2, h3, h4 {
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+}
+
+h4 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+ul li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+ul li::before {
+    content: '•'; /* Bullet point */
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #E65100;
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    background-color: var(--bg-white);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px; /* Adjust as needed */
+    width: auto;
+}
+
+nav .nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+nav .nav-menu li a {
+    color: var(--text-dark);
+    font-weight: 400;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav .nav-menu li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav .nav-menu li a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+nav .nav-menu li a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-dark);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero-section {
+    background-image: url('images/main_visual_1.png'); /* Placeholder, use main_visual_1.png or main_visual_2.png */
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    display: flex;
+    align-items: flex-end; /* 將內容對齊底部 */
+    justify-content: flex-end; /* 將內容對齊右側 */
+    color: var(--bg-white);
+    text-align: center;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(230, 74, 25, 0.3), rgba(0, 0, 0, 0.6)); /* 日落感漸層遮罩 */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    padding: 15px 25px; /* 調整為適合按鈕的內邊距 */
+    margin: 30px; /* 保持與邊緣的距離 */
+    background: rgba(0, 0, 0, 0.6); /* 更不透明的背景，確保按鈕可讀性 */
+    border-radius: 5px; /* 圓角 */
+    display: inline-block; /* 讓背景適應內容 */
+}
+
+.hero-content h1 {
+    color: var(--bg-white);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    color: var(--bg-white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Activities Section */
+.activity-item {
+    margin-bottom: 60px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.activity-item:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.activity-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+
+.activity-content img {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.activity-content p {
+    flex: 2;
+    min-width: 300px;
+}
+
+.activity-content .large-img {
+    flex-basis: 100%; /* Full width for large images like maps */
+}
+
+.diy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.diy-card {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.diy-card:hover {
+    transform: translateY(-5px);
+}
+
+.diy-card img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Market Section */
+.market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.market-img, .perf-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.market-item {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.market-item:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.market-item h4 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.market-item.food-item h4 {
+    color: var(--accent-color); /* Different color for food items */
+}
+
+/* Performances Section */
+.performance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.performance-item {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 20px;
+}
+
+.performance-item h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Shuttle & Accommodation Sections */
+.shuttle-routes, .shuttle-booking, .shuttle-important-notes,
+.hotel-partners, .voucher-details {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.shuttle-important-notes ul li::before {
+    content: '⚠️'; /* Warning icon */
+    color: orange;
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-dark);
+    color: var(--bg-white);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+
+/* Placeholder image styling */
+.placeholder-img {
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-style: italic;
+    min-height: 150px; /* Default min-height for placeholders */
+    border: 1px dashed #999;
+}
+
+.activity-img.placeholder-img {
+    min-height: 250px;
+}
+
+.diy-card img.placeholder-img {
+    min-height: 180px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+    .hero-content p {
+        font-size: 1.2em;
+    }
+    nav .nav-menu {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0;
+    }
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+
+    /* Mobile Navigation */
+    nav .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-white);
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 20px 0;
+    }
+
+    nav .nav-menu.active {
+        display: flex;
+    }
+
+    nav .nav-menu li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    nav .nav-menu li a {
+        display: block;
+        padding: 10px 20px;
+        color: var(--text-dark);
+    }
+
+    nav .nav-menu li a:hover {
+        background-color: var(--bg-light);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .activity-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .activity-content img, .activity-content p {
+        min-width: unset;
+        width: 100%;
+    }
+    .diy-grid, .market-grid, .performance-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .logo img {
+        height: 50px;
+    }
+}
