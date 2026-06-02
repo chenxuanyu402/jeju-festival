@@ -4,287 +4,220 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JEJU MODE LIFESTYLE FESTIVAL</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for a natural, friendly feel, e.g., Noto Sans TC or similar -->
+    <!-- 引入 Google 字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS for Shuttle Schedule Table -->
+    <!-- 使用 Tailwind CSS 加速排版 -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        .section-padding { padding: 80px 0; }
+    </style>
 </head>
-<body>
-    <header>
-        <div class="container mx-auto px-4">
+<body class="bg-white text-gray-800">
+
+    <!-- 導覽列 -->
+    <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center py-4">
             <div class="logo">
-                <a href="#hero">
-                    <img src="images/logo.png" alt="JEJU MODE LIFESTYLE FESTIVAL Logo">
-                </a>
+                <a href="#hero"><img src="images/logo.png" alt="Logo" class="h-10"></a>
             </div>
-            <nav>
-                <div class="flex items-center space-x-4">
-                    <!-- 語系切換按鈕 -->
-                    <select id="language-select" class="bg-white border border-gray-200 text-sm rounded-lg px-2 py-1 outline-none focus:ring-2 focus:ring-orange-500" onchange="changeLanguage(this.value)">
-                        <option value="zh">繁體中文</option>
-                        <option value="en">English</option>
-                        <option value="ja">日本語</option>
-                        <option value="ko">한국어</option>
-                    </select>
-                    
-                    <button class="menu-toggle" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <ul class="nav-menu">
-                        <li><a href="#about" data-i18n="nav_about">關於活動</a></li>
-                        <li><a href="#activities" data-i18n="nav_activities">活動內容</a></li>
-                        <li><a href="#market" data-i18n="nav_market">特色市集</a></li>
-                        <li><a href="#performances" data-i18n="nav_performances">舞台表演</a></li>
-                        <li><a href="#shuttle" data-i18n="nav_shuttle">接駁資訊</a></li>
-                        <li><a href="#accommodation" data-i18n="nav_accommodation">住宿合作</a></li>
-                        <li><a href="#tickets" data-i18n="nav_tickets">票務資訊</a></li>
-                        <li><a href="#contact" data-i18n="nav_contact">聯絡我們</a></li>
-                    </ul>
-                </div>
+            <nav class="flex items-center space-x-6">
+                <select id="language-select" class="bg-gray-50 border border-gray-200 text-sm rounded-lg px-2 py-1 outline-none focus:ring-2 focus:ring-orange-500" onchange="changeLanguage(this.value)">
+                    <option value="zh">繁體中文</option>
+                    <option value="en">English</option>
+                    <option value="ja">日本語</option>
+                    <option value="ko">한국어</option>
+                </select>
+                <ul class="hidden md:flex space-x-6 font-medium text-gray-600">
+                    <li><a href="#about" data-i18n="nav_about">關於活動</a></li>
+                    <li><a href="#tickets" data-i18n="nav_tickets">票務資訊</a></li>
+                    <li><a href="#shuttle" data-i18n="nav_shuttle">接駁資訊</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">聯絡我們</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="relative w-full overflow-hidden bg-gray-100">
-            <!-- 使用 img 標籤並設定 w-full h-auto 確保圖片完整呈現不被裁剪 -->
-            <img src="images/hero_visual.png" alt="JEJU MODE Main Visual" class="w-full h-auto block min-h-[200px]">
+        <!-- 主視覺 Hero Section -->
+        <section id="hero" class="relative w-full overflow-hidden">
+            <img src="images/hero_visual.png" alt="Main Visual" class="w-full h-auto block">
             <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
-                <a href="#tickets" data-i18n="hero_btn" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-bold text-lg shadow-2xl transition transform hover:scale-105">立即購票</a>
+                <a href="#tickets" data-i18n="hero_btn" class="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full font-bold text-xl shadow-2xl transition transform hover:scale-105 inline-block">立即購票</a>
             </div>
         </section>
 
-        <section id="about" class="section-padding">
-            <div class="container">
-                <h2 class="text-3xl font-bold mb-8 text-gray-800" data-i18n="about_title">遇見全新濟州：JEJU MODE LIFESTYLE FESTIVAL 即將浪漫登場！</h2>
-                <p data-i18n="about_p1">每當提起沖繩，腦海中便會響起熱血的 EISA 沖繩太鼓舞；想到澎湖，夜空中綻放的花火節早已成為青春的代名詞。那麼，屬於濟州島的標誌性慶典，會是什麼模樣？</p>
-                <p data-i18n="about_p2">濟州島，這座擁有豐厚火山自然奇景與神祕神話色彩的島嶼，今年將以全新的面貌與你相遇！首屆 【JEJU MODE LIFESTYLE FESTIVAL】 正式啟航，我們秉持著對在地生活美學的熱愛，精心打造一場專屬於濟州島的生活文化盛宴。這不只是一場祭典，更是一扇全新的窗，要帶著每一位踏上島嶼的旅人，用截然不同的視角，重新觀看、深度感受濟州的靈魂與魅力。</p>
-                <p data-i18n="about_p3">本次活動特別選在充滿神話底蘊與大自然氣息的「濟州石文化公園」盛大舉辦。在這裡，你可以在文創風格市集中淘選島嶼創作者的熱情、透過深度集章之旅探索公園的神祕角落、親手參與富含在地溫度的 DIY 手作體驗，夜幕低垂時，更有引爆全場熱情的 K-POP 頂級巨星表演將氣氛推向最高潮！</p>
-                <p data-i18n="about_p4">從自然的靜謐到音樂的狂歡，一場融合傳統文化與現代潮流的島嶼派對即將展開。誠摯邀請您與我們一同寫下這場盛典的第一頁，沉浸在濟州獨一無二的夢幻魅力中！</p>
+        <!-- 關於活動 -->
+        <section id="about" class="section-padding container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800" data-i18n="about_title">遇見全新濟州：JEJU MODE LIFESTYLE FESTIVAL</h2>
+            <div class="max-w-4xl mx-auto text-lg text-gray-600 leading-relaxed space-y-4">
+                <p data-i18n="about_p1">每當想起沖繩，腦海中便會響起熱血的太鼓舞；想到濟州島，將以全新的面貌與你相遇！</p>
+                <p data-i18n="about_p2">這不只是一場祭典，更是一扇全新的窗，要帶著旅人深度感受濟州的魅力。</p>
             </div>
         </section>
 
-        <section id="activities" class="section-padding bg-light">
-            <div class="container">
-                <h2 class="text-3xl font-bold mb-8 text-gray-800" data-i18n="activities_title">精彩活動一覽</h2>
-
-                <div class="activity-item">
-                    <h3>集章闖關趣</h3>
-                    <div class="activity-content">
-                        <img src="images/stamp_rally_postcard.png" alt="集章活動明信片示意圖" class="activity-img placeholder-img">
-                        <p>我們將印刷一張精美的明信片，引導遊客前往六個特色集章站點。完成所有集章後，遊客可獲得一份專屬數位認證書，證書以漢拏山、石頭爺爺、海女及柑橘等濟州代表元素為視覺主軸，讓您將這份獨特回憶帶回家。此外，憑完成集章的明信片，還可兌換限量周邊商品：帆布袋與貼紙！</p>
-                        <img src="images/stamp_rally_merchandise.png" alt="集章活動周邊商品示意圖" class="activity-img placeholder-img">
-                    </div>
-                </div>
-
-                <div class="activity-item">
-                    <h3>濟州特色DIY體驗</h3>
-                    <p>親手製作，帶走濟州的美好回憶！</p>
-                    <div class="diy-grid">
-                        <div class="diy-card">
-                            <img src="images/diy_orange_jam.png" alt="DIY在地手作橘子醬體驗" class="diy-img placeholder-img">
-                            <h4>(一) DIY在地手作橘子醬體驗</h4>
+        <!-- 票務資訊表單 (#tickets) -->
+        <section id="tickets" class="section-padding bg-orange-50">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <h2 class="text-3xl font-bold mb-10 text-center text-gray-800" data-i18n="tickets_title">票務資訊</h2>
+                <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-orange-100">
+                    <form id="booking-form" class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">選擇票種</label>
+                            <select id="ticket-type" onchange="updateTotal()" class="w-full p-4 border-2 border-gray-100 rounded-2xl outline-none focus:border-orange-500 transition">
+                                <option value="1200">單日票 (預售) - NT$ 1,200</option>
+                                <option value="2000">雙日優惠票 - NT$ 2,000</option>
+                                <option value="800">學生/愛心票 - NT$ 800</option>
+                            </select>
                         </div>
-                    </div>
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">購買張數</label>
+                            <input type="number" id="ticket-qty" value="1" min="1" oninput="updateTotal()" class="w-full p-4 border-2 border-gray-100 rounded-2xl outline-none focus:border-orange-500 transition">
+                        </div>
+                        <div class="flex justify-between items-center py-4 border-t border-dashed">
+                            <span class="text-gray-500 font-medium text-lg">預計付款總額</span>
+                            <span class="text-3xl font-black text-orange-600">NT$ <span id="total-amount">1,200</span></span>
+                        </div>
+                        <button type="submit" class="w-full bg-orange-500 text-white py-5 rounded-2xl font-bold text-xl hover:bg-orange-600 transition-all shadow-lg">確認預訂購票</button>
+                    </form>
                 </div>
             </div>
         </section>
 
+        <!-- 接駁資訊表單 (#shuttle) -->
+        <section id="shuttle" class="section-padding">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <h2 class="text-3xl font-bold mb-10 text-center text-gray-800" data-i18n="shuttle_title">接駁預約</h2>
+                <div class="bg-gray-50 p-8 md:p-12 rounded-3xl border border-gray-200 shadow-sm">
+                    <form id="shuttle-booking-form" class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">接駁路線</label>
+                            <select id="shuttle-route" onchange="updateShuttleTotal()" class="w-full p-4 border-2 border-white rounded-2xl outline-none focus:border-blue-500 transition">
+                                <option value="100">濟州機場 ⇄ 活動會場 (NT$ 100)</option>
+                                <option value="150">濟州市區 ⇄ 活動會場 (NT$ 150)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">乘車人數</label>
+                            <input type="number" id="shuttle-qty" value="1" min="1" oninput="updateShuttleTotal()" class="w-full p-4 border-2 border-white rounded-2xl outline-none focus:border-blue-500 transition">
+                        </div>
+                        <div class="text-right text-2xl font-bold text-blue-600">
+                            接駁小計：NT$ <span id="shuttle-total-amount">100</span>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold text-xl hover:bg-blue-700 transition shadow-lg">預約接駁車</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- JUICY5 聯絡我們 -->
+        <section id="contact" style="padding: 100px 20px; background-color: #ffffff; text-align: center;">
+            <div style="max-width: 850px; margin: 0 auto;">
+                <div style="margin-bottom: 35px;">
+                    <img src="images/juicy5-logo-official.png" alt="JUICY5 Logo" style="max-width: 180px; height: auto; margin: 0 auto;">
+                </div>
+                <div style="margin-bottom: 45px;">
+                    <p style="font-size: 1.1rem; color: #666; margin-bottom: 12px;">如果您有任何疑問，歡迎透過以下方式與我們聯繫：</p>
+                    <h2 style="font-size: 2.5rem; font-weight: bold; margin: 0; color: #1a1a1a;">
+                        聯絡我們 <span style="font-weight: 300; color: #999; font-size: 1.8rem; margin-left: 10px;">Contact Us</span>
+                    </h2>
+                    <h3 style="font-size: 1.25rem; color: #ff6b00; margin-top: 8px; font-weight: 600;">JUICY5｜Together, we solve everything.</h3>
+                </div>
+                <div style="text-align: justify; background: #ffffff; padding: 40px; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 50px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 15px; font-weight: bold;">我們是 JUICY5 —— 本次濟州島大型活動的幕後推手。</p>
+                    <p style="color: #444; line-height: 2;">作為兼具成熟執行力的一站式全方位商業策展專家，從客戶洞察、跨界串聯到精準定位，我們打點活動的每一個細節。不論您是尋求商務合作、品牌贊助，或對本次活動有任何諮詢需求，歡迎與 JUICY5 聯絡，讓我們一起共創無限可能。</p>
+                </div>
+                <div style="background-color: #1a1a1a; color: #fff; padding: 50px 30px; border-radius: 25px;">
+                    <h4 style="font-size: 1.5rem; margin-bottom: 30px; color: #ff6b00; font-weight: bold;">聯繫 JUICY5 團隊</h4>
+                    <div style="font-size: 1.2rem; margin-bottom: 20px;">
+                        電子郵件：<a href="mailto:juicy5@gmail.com" style="color: #fff; text-decoration: none; border-bottom: 1px solid #ff6b00;">juicy5@gmail.com</a>
+                    </div>
+                    <div style="font-size: 1.2rem;">
+                        電話：<a href="tel:+886-2-2462-2192" style="color: #fff; text-decoration: none;">+886-2-2462-2192</a>
+                        <p style="font-size: 0.95rem; color: #888; margin-top: 10px;">(服務時間：週一至週五 09:00-18:00 KST)</p>
+                    </div>
+                </div>
+                <div style="margin-top: 50px; font-size: 1.4rem; font-weight: bold; color: #1a1a1a;">
+                    期待在 <span style="border-bottom: 3px solid #ff6b00;">JEJU MODE LIFESTYLE FESTIVAL</span> 與您相見！
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- JUICY5 聯絡我們（單一正確區塊） -->
-    <section id="contact" style="font-family: 'Noto Sans TC', sans-serif; line-height: 1.8; color: #333; padding: 60px 20px; max-width: 850px; margin: 0 auto; text-align: center;">
-        <div style="margin-bottom: 30px;">
-            <img src="images/juicy5-logo-official.png" alt="JUICY5 Logo" style="max-width: 200px; height: auto;">
-        </div>
-        <div style="margin-bottom: 40px;">
-            <p style="font-size: 1.1rem; color: #666; margin-bottom: 10px;">如果您有任何疑問，歡迎透過以下方式與我們聯繫：</p>
-            <h2 style="font-size: 2.5rem; font-weight: bold; margin: 0; letter-spacing: 1px;">聯絡我們 <span style="font-weight: 300; color: #999; font-size: 1.8rem; margin-left: 10px;">Contact Us</span></h2>
-            <h3 style="font-size: 1.2rem; color: #ff6b00; margin-top: 5px; font-weight: 500;">JUICY5｜Together, we solve everything.</h3>
-        </div>
-        <div style="text-align: justify; background: #ffffff; padding: 35px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 40px;">
-            <p style="font-size: 1.2rem; margin-bottom: 15px; font-weight: 600;">我們是 JUICY5 —— 本次濟州島大型活動的幕後推手。</p>
-            <p style="font-size: 1.05rem; color: #444;">作為兼具成熟執行力的一站式全方位商業策展專家，從客戶洞察、跨界串聯到精準定位，我們打點活動的每一個細節。不論您是尋求商務合作、品牌贊助，或對本次活動有任何諮詢需求，歡迎與 JUICY5 聯絡，讓我們一起共創無限可能。</p>
-        </div>
-        <div style="background-color: #1a1a1a; color: #fff; padding: 40px; border-radius: 20px;">
-            <h4 style="font-size: 1.4rem; margin-bottom: 25px; color: #ff6b00;">聯繫 JUICY5 團隊</h4>
-            <div style="font-size: 1.1rem; margin-bottom: 15px;"><span>電子郵件：</span><a href="mailto:juicy5@gmail.com" style="color: #fff; text-decoration: none;">juicy5@gmail.com</a></div>
-            <div style="font-size: 1.1rem;"><span>電話：</span><a href="tel:+886-2-2462-2192" style="color: #fff; text-decoration: none;">+886-2-2462-2192</a><p style="font-size: 0.9rem; color: #aaa; margin-top: 8px;">(服務時間：週一至週五 09:00-18:00 KST)</p></div>
-        </div>
-        <div style="margin-top: 45px; font-size: 1.25rem; font-weight: bold; color: #1a1a1a;">期待在 <span style="border-bottom: 2px solid #ff6b00;">JEJU MODE LIFESTYLE FESTIVAL</span> 與您相見！</div>
-    </section>
-
-    <!-- 支付 QR Code 彈出視窗（單一） -->
-    <div id="qr-modal" class="fixed inset-0 bg-black bg-opacity-60 z-[2000] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-3xl max-w-sm w-full p-8 text-center shadow-2xl transform transition-all scale-100">
-            <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✓</div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="modal_success">預訂資訊已確認</h3>
-            <p id="qr-modal-description" class="text-gray-600 mb-6 font-medium"></p>
-            <div class="bg-gray-50 p-6 rounded-2xl mb-6 border border-gray-100"><img src="images/qr_code_payment.png" alt="Payment QR Code" class="w-48 h-48 mx-auto shadow-sm"></div>
-            <p class="text-xs text-gray-400 mb-6" data-i18n="modal_instruction">請於現場出示此 QR Code 完成支付與票券核銷</p>
-            <button onclick="closeModal()" class="w-full py-4 bg-gray-900 text-white font-bold rounded-2xl hover:bg-black transition active:scale-95" data-i18n="modal_close">關閉視窗</button>
+    <!-- 支付成功 QR Modal -->
+    <div id="qr-modal" class="fixed inset-0 bg-black/70 z-[9999] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-8 text-center shadow-2xl">
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">✓</div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">預訂確認</h3>
+            <p id="qr-modal-description" class="text-gray-500 mb-8"></p>
+            <div class="bg-gray-50 p-6 rounded-2xl mb-8">
+                <img src="images/qr_code_payment.png" alt="QR Code" class="w-48 h-48 mx-auto">
+            </div>
+            <button onclick="closeModal()" class="w-full py-4 bg-gray-900 text-white font-bold rounded-2xl hover:bg-black transition">關閉視窗</button>
         </div>
     </div>
 
-    <footer>
-        <div class="container"><p>&copy; 2026 JEJU MODE LIFESTYLE FESTIVAL. All Rights Reserved.</p></div>
+    <footer class="bg-gray-50 py-12 text-center text-gray-400 text-sm">
+        <p>&copy; 2026 JEJU MODE LIFESTYLE FESTIVAL. All Rights Reserved.</p>
     </footer>
 
     <script>
+        // 翻譯內容
         const translations = {
-            zh: {
-                nav_about: "關於活動", nav_activities: "活動內容", nav_market: "特色市集", nav_performances: "舞台表演", 
-                nav_shuttle: "接駁資訊", nav_accommodation: "住宿合作", nav_tickets: "票務資訊", nav_contact: "聯絡我們",
-                hero_btn: "立即購票", about_title: "遇見全新濟州：JEJU MODE LIFESTYLE FESTIVAL 即將浪漫登場！",
-                activities_title: "精彩活動一覽", market_title: "濟州特色&文青市集", performances_title: "主舞台精彩表演", 
-                shuttle_title: "接駁車資訊", accommodation_title: "住宿合作與市集抵用券", tickets_title: "票務資訊", 
-                contact_title: "聯絡我們", modal_success: "預訂資訊已確認", modal_close: "關閉視窗",
-                modal_instruction: "請於現場出示此 QR Code 完成支付與票券核銷",
-                success_msg_ticket: "您已成功預訂：{qty} 張 {name}",
-                success_msg_shuttle: "您已成功預約：{qty} 人份 {name}"
-            },
-            en: {
-                nav_about: "About", nav_activities: "Activities", nav_market: "Market", nav_performances: "Stage", 
-                nav_shuttle: "Shuttle", nav_accommodation: "Hotels", nav_tickets: "Tickets", nav_contact: "Contact",
-                hero_btn: "Book Now", about_title: "Meet a Brand New Jeju: JEJU MODE LIFESTYLE FESTIVAL!",
-                activities_title: "Event Activities", market_title: "Jeju Lifestyle Market", performances_title: "Stage Performances", 
-                shuttle_title: "Shuttle Bus Info", accommodation_title: "Hotel Partnerships", tickets_title: "Ticket Information", 
-                contact_title: "Contact Us", modal_success: "Booking Confirmed", modal_close: "Close",
-                modal_instruction: "Please present this QR Code at the venue for payment and check-in.",
-                success_msg_ticket: "Successfully booked: {qty} x {name}",
-                success_msg_shuttle: "Successfully reserved: {qty} x {name}"
-            },
-            ja: {
-                nav_about: "イベント概要", nav_activities: "内容", nav_market: "マーケット", nav_performances: "ステージ", 
-                nav_shuttle: "シャトルバス", nav_accommodation: "宿泊提携", nav_tickets: "チケット", nav_contact: "お問い合わせ",
-                hero_btn: "チケット購入", about_title: "新しい済州に出会う：JEJU MODE LIFESTYLE FESTIVAL!",
-                activities_title: "イベント内容", market_title: "マーケット", performances_title: "ステージ", 
-                shuttle_title: "シャトルバス案内", accommodation_title: "宿泊情報", tickets_title: "チケット情報", 
-                contact_title: "お問い合わせ", modal_success: "予約が確認されました", modal_close: "閉じる",
-                modal_instruction: "会場でこのQRコードを提示して、支払いを行ってください。",
-                success_msg_ticket: "予約完了：{qty} 枚 {name}",
-                success_msg_shuttle: "予約完了：{qty} 名 {name}"
-            },
-            ko: {
-                nav_about: "행사 정보", nav_activities: "내용", nav_market: "마켓", nav_performances: "공연", 
-                nav_shuttle: "셔틀 정보", nav_accommodation: "숙박 협력", nav_tickets: "티켓 정보", nav_contact: "문의하기",
-                hero_btn: "티켓 예매", about_title: "새로운 제주를 만나다: JEJU MODE LIFESTYLE FESTIVAL!",
-                activities_title: "주요 행사 안내", market_title: "라이프스타일 마켓", performances_title: "스테이지 공연", 
-                shuttle_title: "셔틀버스 정보", accommodation_title: "숙박 및 쿠폰", tickets_title: "티켓 예매", 
-                contact_title: "문의하기", modal_success: "예약 정보 확인됨", modal_close: "닫기",
-                modal_instruction: "현장에서 이 QR 코드를 제시하여 결제를 완료해 주세요.",
-                success_msg_ticket: "예약 성공: {qty} 매 {name}",
-                success_msg_shuttle: "예약 성공: {qty} 명 {name}"
-            }
+            zh: { nav_about: "關於活動", nav_tickets: "票務資訊", nav_shuttle: "接駁資訊", nav_contact: "聯絡我們", hero_btn: "立即購票", about_title: "遇見全新濟州：JEJU MODE LIFESTYLE FESTIVAL", tickets_title: "票務資訊", shuttle_title: "接駁資訊", success_msg_ticket: "成功預訂：{qty} 張 {name}", success_msg_shuttle: "成功預約：{qty} 人份 {name}" },
+            en: { nav_about: "About", nav_tickets: "Tickets", nav_shuttle: "Shuttle", nav_contact: "Contact", hero_btn: "Book Now", about_title: "Meet Brand New Jeju", tickets_title: "Ticket Info", shuttle_title: "Shuttle Info", success_msg_ticket: "Booked: {qty} x {name}", success_msg_shuttle: "Reserved: {qty} x {name}" }
         };
 
         function changeLanguage(lang) {
             localStorage.setItem('preferredLanguage', lang);
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    element.innerHTML = translations[lang][key];
-                }
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) el.innerText = translations[lang][key];
             });
             document.getElementById('language-select').value = lang;
         }
 
-        function selectTicket(name, price) {
-            const select = document.getElementById('ticket-type');
-            if (!select) return;
-            for (let i = 0; i < select.options.length; i++) {
-                if (select.options[i].text.includes(name)) {
-                    select.selectedIndex = i;
-                    break;
-                }
-            }
-            updateTotal();
-        }
-
         function updateTotal() {
-            const typeSelect = document.getElementById('ticket-type');
-            const qtyInput = document.getElementById('ticket-qty');
-            const totalSpan = document.getElementById('total-amount');
-            if (typeSelect && qtyInput && totalSpan) {
-                const price = parseInt(typeSelect.value);
-                const qty = parseInt(qtyInput.value);
-                totalSpan.innerText = (price * qty).toLocaleString();
-            }
+            const price = parseInt(document.getElementById('ticket-type').value);
+            const qty = parseInt(document.getElementById('ticket-qty').value);
+            document.getElementById('total-amount').innerText = (price * qty).toLocaleString();
         }
 
         function updateShuttleTotal() {
-            const routeSelect = document.getElementById('shuttle-route');
-            const qtyInput = document.getElementById('shuttle-qty');
-            const totalSpan = document.getElementById('shuttle-total-amount');
-            if (routeSelect && qtyInput && totalSpan) {
-                const price = parseInt(routeSelect.value);
-                const qty = parseInt(qtyInput.value);
-                totalSpan.innerText = (price * qty).toLocaleString();
-            }
+            const price = parseInt(document.getElementById('shuttle-route').value);
+            const qty = parseInt(document.getElementById('shuttle-qty').value);
+            document.getElementById('shuttle-total-amount').innerText = (price * qty).toLocaleString();
         }
 
-        function showQRModal(description) {
-            const modal = document.getElementById('qr-modal');
-            const descElem = document.getElementById('qr-modal-description');
-            if (modal && descElem) {
-                descElem.innerText = description;
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('qr-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        }
+        function closeModal() { document.getElementById('qr-modal').classList.add('hidden'); }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferredLanguage') || 'zh';
-            changeLanguage(savedLang);
-
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', function() {
-                    navMenu.classList.toggle('active');
-                    menuToggle.classList.toggle('active');
-                });
-                navMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                    });
-                });
-            }
-
-            document.getElementById('booking-form')?.addEventListener('submit', (e) => {
+            changeLanguage(localStorage.getItem('preferredLanguage') || 'zh');
+            
+            // 購票提交
+            document.getElementById('booking-form').addEventListener('submit', (e) => {
                 e.preventDefault();
-                const lang = localStorage.getItem('preferredLanguage') || 'zh';
-                const select = document.getElementById('ticket-type');
-                const ticketName = select.options[select.selectedIndex].text.split(' (')[0];
+                const sel = document.getElementById('ticket-type');
+                const name = sel.options[sel.selectedIndex].text.split(' - ')[0];
                 const qty = document.getElementById('ticket-qty').value;
-                let msg = translations[lang].success_msg_ticket || translations['zh'].success_msg_ticket;
-                msg = msg.replace('{qty}', qty).replace('{name}', ticketName);
-                showQRModal(msg);
+                const lang = localStorage.getItem('preferredLanguage') || 'zh';
+                const msg = translations[lang].success_msg_ticket.replace('{qty}', qty).replace('{name}', name);
+                document.getElementById('qr-modal-description').innerText = msg;
+                document.getElementById('qr-modal').classList.remove('hidden');
             });
 
-            document.getElementById('shuttle-booking-form')?.addEventListener('submit', (e) => {
+            // 接駁提交
+            document.getElementById('shuttle-booking-form').addEventListener('submit', (e) => {
                 e.preventDefault();
-                const lang = localStorage.getItem('preferredLanguage') || 'zh';
-                const select = document.getElementById('shuttle-route');
-                const routeName = select.options[select.selectedIndex].text.split(' (')[0];
+                const sel = document.getElementById('shuttle-route');
+                const name = sel.options[sel.selectedIndex].text.split(' (')[0];
                 const qty = document.getElementById('shuttle-qty').value;
-                let msg = translations[lang].success_msg_shuttle || translations['zh'].success_msg_shuttle;
-                msg = msg.replace('{qty}', qty).replace('{name}', routeName);
-                showQRModal(msg);
+                const lang = localStorage.getItem('preferredLanguage') || 'zh';
+                const msg = translations[lang].success_msg_shuttle.replace('{qty}', qty).replace('{name}', name);
+                document.getElementById('qr-modal-description').innerText = msg;
+                document.getElementById('qr-modal').classList.remove('hidden');
             });
         });
     </script>
